@@ -4,16 +4,13 @@ def validasi_angka_positif(nilai_str, nama_field="Nilai"):
     Menggunakan try/except (ValueError), raise, dan assert sesuai ketentuan tugas.
     """
     try:
-        # Konversi ke float, bisa memunculkan ValueError jika bukan angka
         angka = float(nilai_str)
     except ValueError:
         raise ValueError(f"Error: '{nama_field}' harus berupa angka yang valid!")
 
-    # Menggunakan raise untuk exception buatan sendiri jika negatif atau nol
     if angka <= 0:
         raise ValueError(f"Error: '{nama_field}' tidak boleh bernilai nol atau negatif!")
 
-    # Menggunakan assert untuk pengecekan internal
     assert angka > 0, f"AssertionError: {nama_field} gagal divalidasi."
 
     return angka
