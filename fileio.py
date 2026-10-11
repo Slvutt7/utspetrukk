@@ -6,11 +6,9 @@ def inisialisasi_file():
     """Mode 'x': Membuat file data pertama kali. Menangani FileExistsError."""
     try:
         with open(NAMA_FILE, 'x') as f:
-            # Menulis header awal file
             f.write("TANGGAL|JENIS|KATEGORI|NOMINAL|KETERANGAN\n")
         print("File data berhasil dibuat!")
     except FileExistsError:
-        # File sudah ada, jadi aman dilompati
         pass
 
 def tambah_transaksi(data_str):
@@ -24,7 +22,6 @@ def baca_transaksi():
     transaksi_list = []
     try:
         with open(NAMA_FILE, 'r') as f:
-            # Pembacaan iteratif baris demi baris sesuai ketentuan
             for baris in f:
                 transaksi_list.append(baris.strip())
         return transaksi_list
