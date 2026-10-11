@@ -2,7 +2,6 @@ import os
 from keuangan_app import fileio, processing, validasi
 
 def main():
-    # Inisialisasi file data pertama kali menggunakan mode 'x'
     fileio.inisialisasi_file()
     
     while True:
@@ -22,7 +21,6 @@ def main():
             jenis_raw = input("Jenis (Pemasukan / Pengeluaran): ").strip()
             
             try:
-                # Validasi menggunakan modul validasi (try/except, raise)
                 jenis = validasi.validasi_pilihan_jenis(jenis_raw)
                 kategori = input("Masukkan kategori (misal: Gaji, Makan, Transport): ").strip()
                 if not kategori:
@@ -34,11 +32,9 @@ def main():
                 catatan = input("Catatan tambahan (opsional): ").strip()
                 if not catatan:
                     catatan = "-"
-                    
-                # Membuat objek Transaksi (menggunakan **kwargs)
+
                 trx = processing.Transaksi(tanggal, jenis, kategori, nominal, catatan=catatan)
-                
-                # Menyimpan data menggunakan mode 'a' di fileio
+
                 fileio.tambah_transaksi(trx.format_ke_baris())
                 print("✅ Transaksi berhasil disimpan!")
                 
@@ -78,5 +74,4 @@ def main():
             print("❌ Pilihan tidak valid, silakan masukkan angka 1-4.")
 
 if __name__ == '__main__':
-    # Blok __main__ untuk pengujian lokal aplikasi utama
     main()
